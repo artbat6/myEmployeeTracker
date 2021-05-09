@@ -1,13 +1,20 @@
-DROP TABLE IF EXISTS departments;
-DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS employees;
+drop database if exists employee_db;
+create database employee_db;
+use employee_db;
 
-CREATE TABLE employees (
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    job_title VARCHAR(30) NOT NULL,
-    department VARCHAR(30) NOT NULL,
-    salary INTEGER NOT NULL,
-    manager_id INTEGER NOT NULL
-);
+create table employee (
+id int not null primary key auto_increment,
+first_name varchar(30) not null,
+last_name varchar(30) not null,
+role_id int not null,
+manager_id int);
+
+create table role (
+id int not null primary key auto_increment,
+title varchar(30) not null,
+salary decimal not null,
+department_id int not null);
+
+create table department (
+id int not null primary key auto_increment,
+name varchar(30) not null);
